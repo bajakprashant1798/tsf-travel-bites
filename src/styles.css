@@ -83,8 +83,12 @@
 }
 
 @layer base {
-  * { border-color: var(--color-border); }
-  html { font-family: var(--font-sans); }
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    font-family: var(--font-sans);
+  }
   body {
     background-color: var(--color-cream);
     color: var(--color-foreground);
@@ -93,11 +97,19 @@
 }
 
 @layer utilities {
-  .font-display { font-family: var(--font-display); }
-  .font-sans { font-family: var(--font-sans); }
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .font-sans {
+    font-family: var(--font-sans);
+  }
   .bg-paper {
     background-color: var(--color-cream);
-    background-image: radial-gradient(circle at 1px 1px, rgba(46, 139, 61, 0.06) 1px, transparent 0);
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(46, 139, 61, 0.06) 1px,
+      transparent 0
+    );
     background-size: 24px 24px;
   }
 }

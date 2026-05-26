@@ -20,7 +20,7 @@ interface Ctx {
 
 const TravelBoxContext = createContext<Ctx | null>(null);
 const STORAGE_KEY = "tsf-travel-box";
-const WHATSAPP_NUMBER = "919999999999";
+const WHATSAPP_NUMBER = "919427481798";
 
 export function TravelBoxProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<BoxEntry[]>([]);
@@ -29,7 +29,9 @@ export function TravelBoxProvider({ children }: { children: ReactNode }) {
     try {
       const raw = typeof window !== "undefined" ? localStorage.getItem(STORAGE_KEY) : null;
       if (raw) setItems(JSON.parse(raw));
-    } catch {}
+    } catch (e) {
+      console.warn("Failed to load travel box from storage:", e);
+    }
   }, []);
 
   useEffect(() => {
@@ -45,11 +47,14 @@ export function TravelBoxProvider({ children }: { children: ReactNode }) {
     }, 0);
     const count = items.reduce((s, e) => s + e.qty, 0);
 
-    const lines = items.map((e) => {
-      const it = findItem(e.id);
-      if (!it) return "";
-      return `• ${it.name} x${e.qty} — ₹${it.price * e.qty}`;
-    }).filter(Boolean).join("\n");
+    const lines = items
+      .map((e) => {
+        const it = findItem(e.id);
+        if (!it) return "";
+        return `• ${it.name} x${e.qty} — ₹${it.price * e.qty}`;
+      })
+      .filter(Boolean)
+      .join("\n");
 
     const msg = items.length
       ? `Hello TSF! I'd like to order my Travel Box:\n\n${lines}\n\nTotal: ₹${total}\n\nPlease confirm pickup/delivery.`
@@ -87,5 +92,5 @@ export function useTravelBox() {
   return ctx;
 }
 
-export const TSF_PHONE = "+919999999999";
+export const TSF_PHONE = "+919427481798";
 export const TSF_WHATSAPP = WHATSAPP_NUMBER;
