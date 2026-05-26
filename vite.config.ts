@@ -12,9 +12,14 @@ const isVercel = process.env.VERCEL === "1";
 
 export default defineConfig({
   cloudflare: isVercel ? false : undefined,
-  tanstackStart: isVercel
-    ? undefined
-    : {
-        server: { entry: "server" },
-      },
+  tanstackStart: {
+    prerender: {
+      enabled: true,
+      routes: ["/", "/about", "/menu", "/travel-hub", "/contact"],
+      crawlLinks: false,
+    },
+    ...(!isVercel && {
+      server: { entry: "server" },
+    }),
+  },
 });
