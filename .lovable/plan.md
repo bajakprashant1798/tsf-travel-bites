@@ -39,17 +39,20 @@ Each route sets unique `head()` meta (title, description, og:title, og:descripti
 ## Page details
 
 **Home (`/`)**
+
 - Hero: headline "Your Perfect Travel Food Companion" + sub "Swaad Ghar Jaisa, Safar Ke Sath", animated orange CTA → `/menu`, decorative plane-arc echoing the logo
 - 3-category grid (Breakfast / Ready To Eat / Dry Snacks) with hero food imagery → each links to `/menu?category=...`
 - USP cards (4): 100% Vegetarian, Long Shelf-Life, Pure Homemade Taste, Hygienic Travel Packaging — Lucide icons, hover lift
 - "How It Works" 3-step horizontal timeline with motion-on-scroll
 
 **About (`/about`)**
+
 - Story intro (warm narrative, Gujarati heritage)
 - Quality Promise cards: minimal oil / no preservatives / travel-grade packing
 - "Travel Food Tips" panel (train/flight/road trip storage tips)
 
 **Menu (`/menu`)** — core feature
+
 - Sticky search input (filters across all categories live)
 - Filter chips: Spicy / Sweet / Long Shelf Life (tagged in data)
 - Category tabs: Breakfast • Ready To Eat • Dry Snacks (URL-synced via `validateSearch`)
@@ -61,10 +64,12 @@ Each route sets unique `head()` meta (title, description, og:title, og:descripti
   - "Clear box" action
 
 **Travel Hub (`/travel-hub`)**
+
 - 4 large selectable cards: Train Journey • International Flight • Road Trip • Weekend Picnic
 - On select, reveal a curated package combo (items + total) with "Add Package to Travel Box" and "Order on WhatsApp"
 
 **Contact (`/contact`)**
+
 - Prominent notice: "Place orders 24–48 hrs before travel"
 - Form (zod-validated): Name, Phone, Travel Date, Message — on submit, opens WhatsApp prefilled (no backend)
 - Click-to-call button (`tel:+919999999999`) and WhatsApp button
